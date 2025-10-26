@@ -74,6 +74,7 @@ import os
 
 t = 100 * b'Foo '
 assert lzma.decompress(lzma.compress(t)) == t
+assert zlib.decompress(zlib.compress(t)) == t
 
 if sys.platform != 'win32':
     if not (ppc64le or armv7l):
