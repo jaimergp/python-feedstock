@@ -11,9 +11,9 @@ c_stdlib:
 c_stdlib_version:
 - '2.17'
 channel_sources:
-- conda-forge/label/python_rc,conda-forge
+- jaimergp/label/zlib-ng-compat,conda-forge/label/python_rc,conda-forge
 channel_targets:
-- conda-forge python_debug
+- jaimergp zlib-ng-compat_debug
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -23,7 +23,7 @@ docker_image:
 expat:
 - '2'
 freethreading:
-- 'yes'
+- 'no'
 libffi:
 - '3.5'
 liblzma_devel:
@@ -45,7 +45,7 @@ python:
 readline:
 - '8'
 target_platform:
-- linux-aarch64
+- linux-64
 tk:
 - '8.6'
 zip_keys:

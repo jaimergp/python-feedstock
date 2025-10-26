@@ -7,9 +7,9 @@ c_compiler:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge/label/python_rc,conda-forge
+- jaimergp/label/zlib-ng-compat,conda-forge/label/python_rc,conda-forge
 channel_targets:
-- conda-forge main
+- jaimergp zlib-ng-compat
 cxx_compiler:
 - vs2022
 expat:
