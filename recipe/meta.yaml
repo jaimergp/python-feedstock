@@ -225,8 +225,10 @@ outputs:
         - pydoc -h
         - python3-config --help  # [not win]
         # Override libzlib with zlib-ng
-        - conda remove --force --yes -p {{ PREFIX }} libzlib
-        - conda install --yes -p {{ PREFIX }} --force-reinstall jaimergp/label/zlib-ng-compat::zlib-ng
+        - conda remove --force --yes -p "$CONDA_PREFIX" libzlib # [unix] 
+        - conda install --yes -p "$CONDA_PREFIX" --force-reinstall jaimergp/label/zlib-ng-compat::zlib-ng # [unix] 
+        - conda remove --force --yes -p "%CONDA_PREFIX%" libzlib # [win] 
+        - conda install --yes -p "%CONDA_PREFIX%" --force-reinstall jaimergp/label/zlib-ng-compat::zlib-ng # [win] 
         - set "PIP_NO_BUILD_ISOLATION=False"  # [win]
         - set "PIP_NO_DEPENDENCIES=True"  # [win]
         - set "PIP_IGNORE_INSTALLED=True"  # [win]
