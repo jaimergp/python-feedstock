@@ -11,6 +11,10 @@ if [[ ! -d ${SRC_DIR}/python-bin ]]; then
   export PATH=${SRC_DIR}/python-bin/bin:${PATH}
 fi
 
+# Override libzlib with zlib-ng
+conda remove --force --yes -p $PREFIX libzlib
+conda install --yes -p $PREFIX jaimergp/label/zlib-ng-compat::zlib-ng
+
 # The LTO/PGO information was sourced from @pitrou and the Debian rules file in:
 # http://http.debian.net/debian/pool/main/p/python3.6/python3.6_3.6.2-2.debian.tar.xz
 # https://packages.debian.org/source/sid/python3.6
