@@ -224,6 +224,9 @@ outputs:
         - python3 -V            # [not win]
         - pydoc -h
         - python3-config --help  # [not win]
+        # Override libzlib with zlib-ng
+        - conda remove --force --yes -p {{ PREFIX }} libzlib
+        - conda install --yes -p {{ PREFIX }} --force-reinstall jaimergp/label/zlib-ng-compat::zlib-ng
         - set "PIP_NO_BUILD_ISOLATION=False"  # [win]
         - set "PIP_NO_DEPENDENCIES=True"  # [win]
         - set "PIP_IGNORE_INSTALLED=True"  # [win]
