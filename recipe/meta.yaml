@@ -227,8 +227,8 @@ outputs:
         # Override libzlib with zlib-ng
         - conda remove --force --yes -p "$CONDA_PREFIX" libzlib # [unix] 
         - conda install --yes -p "$CONDA_PREFIX" --force-reinstall jaimergp/label/zlib-ng-compat::zlib-ng # [unix] 
-        - CALL conda remove --force --yes -p "%CONDA_PREFIX%" libzlib # [win] 
-        - CALL conda install --yes -p "%CONDA_PREFIX%" --force-reinstall jaimergp/label/zlib-ng-compat::zlib-ng # [win] 
+        - CALL conda.exe remove --force --yes -p "%CONDA_PREFIX%" libzlib # [win] 
+        - CALL conda.exe install --yes -p "%CONDA_PREFIX%" --force-reinstall jaimergp/label/zlib-ng-compat::zlib-ng # [win] 
         - set "PIP_NO_BUILD_ISOLATION=False"  # [win]
         - set "PIP_NO_DEPENDENCIES=True"  # [win]
         - set "PIP_IGNORE_INSTALLED=True"  # [win]
