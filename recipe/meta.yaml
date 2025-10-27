@@ -77,9 +77,11 @@ source:
 {% endif %}
       - patches/0024-Do-not-define-pid_t-as-it-might-conflict-with-the-ac.patch
       - patches/0025-Unvendor-zstd.patch
+      - patches/0026-Use-zlib-ng-windows.patch
 
 build:
   number: {{ build_number }}
+  skip: true  # [not win]
 
 requirements:
   build:
@@ -163,7 +165,8 @@ outputs:
         - bzip2          # [build_platform != target_platform]
         - libsqlite      # [build_platform != target_platform]
         - liblzma-devel  # [build_platform != target_platform]
-        - zlib           # [build_platform != target_platform]
+        - zlib           # [build_platform != target_platform and unix]
+        - zlib-ng        # [build_platform != target_platform and win]
         - zstd           # [build_platform != target_platform]
         - openssl        # [build_platform != target_platform]
         - readline       # [not win and build_platform != target_platform]
@@ -177,7 +180,8 @@ outputs:
         - bzip2
         - libsqlite
         - liblzma-devel
-        - zlib
+        - zlib  # [unix]
+        - zlib-ng  # [win]
         - zstd
         - openssl
         - readline  # [not win]
