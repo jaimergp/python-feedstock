@@ -75,6 +75,9 @@ import os
 t = 100 * b'Foo '
 assert lzma.decompress(lzma.compress(t)) == t
 assert zlib.decompress(zlib.compress(t)) == t
+print("Built against ZLIB API:", zlib.ZLIB_VERSION)
+print("ZLIB NG:", getattr(zlib, "ZLIBNG_VERSION", "N/A"))
+print("ZLIB Runtime:", zlib.ZLIB_RUNTIME_VERSION)
 
 if sys.platform != 'win32':
     if not (ppc64le or armv7l):
