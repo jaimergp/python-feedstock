@@ -1,10 +1,6 @@
 setlocal EnableDelayedExpansion
 echo on
 
-:: Override libzlib with zlib-ng
-CALL conda.exe remove --force --yes -p %PREFIX% libzlib
-CALL conda.exe install -p %PREFIX% --yes --force-reinstall jaimergp/label/zlib-ng-compat::zlib-ng
-
 :: Compile python, extensions and external libraries
 if "%ARCH%"=="64" (
    set PLATFORM=x64

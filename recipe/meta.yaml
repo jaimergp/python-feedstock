@@ -163,7 +163,8 @@ outputs:
         - bzip2          # [build_platform != target_platform]
         - libsqlite      # [build_platform != target_platform]
         - liblzma-devel  # [build_platform != target_platform]
-        - zlib-ng        # [build_platform != target_platform]
+        - zlib           # [build_platform != target_platform]
+        - zlib * *_ng_*  # [build_platform != target_platform]
         - zstd           # [build_platform != target_platform]
         - openssl        # [build_platform != target_platform]
         - readline       # [not win and build_platform != target_platform]
@@ -177,7 +178,8 @@ outputs:
         - bzip2
         - libsqlite
         - liblzma-devel
-        - zlib-ng
+        - zlib
+        - zlib * *_ng_*
         - zstd
         - openssl
         - readline  # [not win]
@@ -212,6 +214,7 @@ outputs:
         - {{ compiler('cxx') }}
         # For tkinter, but we expect from system
         - xorg-libx11   # [unix]
+        - libzlib * *_ng_*
       files:
         - tests/cmake/*
         - tests/cython/*
@@ -224,11 +227,6 @@ outputs:
         - python3 -V            # [not win]
         - pydoc -h
         - python3-config --help  # [not win]
-        # Override libzlib with zlib-ng
-        - conda remove --force --yes -p "$CONDA_PREFIX" libzlib # [unix] 
-        - conda install --yes -p "$CONDA_PREFIX" --force-reinstall jaimergp/label/zlib-ng-compat::zlib-ng # [unix] 
-        - CALL conda.exe remove --force --yes -p "%CONDA_PREFIX%" libzlib # [win] 
-        - CALL conda.exe install --yes -p "%CONDA_PREFIX%" --force-reinstall jaimergp/label/zlib-ng-compat::zlib-ng # [win] 
         - set "PIP_NO_BUILD_ISOLATION=False"  # [win]
         - set "PIP_NO_DEPENDENCIES=True"  # [win]
         - set "PIP_IGNORE_INSTALLED=True"  # [win]
